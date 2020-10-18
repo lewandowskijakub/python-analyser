@@ -1,12 +1,26 @@
-
 def count_lines(filename):
-    # this function returns number of all file lines
-    pass
+    with open(filename, "r") as file_to_analyse:
+        return len(file_to_analyse.readlines())
+
+print(count_lines("to_analyse.py"))
+
+def is_not_empty_line(line):
+    line = line.replace(" ", "")
+    line = line.replace("\t", "")
+    line = line.replace("\r", "")
+    line = line.replace("\n", "")
+    return len(line) != 0
 
 def count_not_empty_lines(filename):
-    # this function returns number of non-empty lines
-    pass
+    counter = 0
+    with open(filename, "r") as file_to_analyse:
+        for line in file_to_analyse.readlines():
+            if is_not_empty_line(line):
+               counter += 1
 
+    return counter 
+
+print(count_not_empty_lines("to_analyse.py"))
 
 def count_comment_lines(filename):
     # this function returns number of comment lines
