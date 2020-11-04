@@ -1,3 +1,5 @@
+import re
+
 def count_lines(filename):
     with open(filename, "r") as file_to_analyse:
         return len(file_to_analyse.readlines())
@@ -46,7 +48,9 @@ def count_code_lines(filename):
     return counter
 
 print(count_code_lines("to_analyse.py"))
-
+'''
+count_words version I
+simple - with split() - not good enough
 def count_words(filename):
     # this function returns number of words in file (#,:,etc, ==, +, etc) are not words
     counter = 0
@@ -59,6 +63,27 @@ def count_words(filename):
     
     return counter
 
+'''
+
+'''
+count_words version II 
+with import re.split() - ok
+'''
+
+def count_words(filename):
+    # this function returns number of words in file (#,:,etc, ==, +, etc) are not words
+    counter = 0
+    with open(filename, "r") as file_to_analyse:
+        for line in file_to_analyse.readlines():
+            lines_to_analyse = re.split(r'\W+',line)
+            for word in lines_to_analyse:
+                if word.isalpha():
+                    # print(word)
+                    counter += 1
+    
+    return counter
+
+
 print(count_words("to_analyse.py"))
 
 def count_word(filename, word):
@@ -66,7 +91,7 @@ def count_word(filename, word):
     counter = 0
     with open(filename, "r") as file_to_analyse:
         for line in file_to_analyse.readlines():
-            lines_to_analyse = line.split()
+            lines_to_analyse = re.split(r'\W+',line)
             for word_in_file in lines_to_analyse:
                 if word.lower() == word_in_file.lower():
                     counter += 1

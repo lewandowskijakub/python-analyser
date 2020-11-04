@@ -1,0 +1,29 @@
+# -----------------------------------------------------------------------------
+# I decided not to divide this module to smallest because from my point of view
+# generally it has only one responsibility. Maybe we have here a fun to count
+# substring but it have strong dependency to InputError so it will require new
+# imports that badly effects this project.
+# -----------------------------------------------------------------------------
+# -----------------------------------------------------------------------------
+# Constants require by google cse
+# -----------------------------------------------------------------------------
+# Exception to handle connect errors and wrong inputs
+# -----------------------------------------------------------------------------
+# The most important class. It provides main functionality and structure to
+# store important data needed to interpret the problem
+# -----------------------------------------------------------------------------
+# Class made for join google search result and be able to visits links
+# It finds occurrences of whole phrases and each word
+# -----------------------------------------------------------------------------
+# The purpose of this class was to interpret the result stored in
+# ParsedSearchTerm. Joining it together it breaks SRP
+# -----------------------------------------------------------------------------
+# Counting substring in a main string
+# -----------------------------------------------------------------------------
+# This function returns the list of SearchResults find by googleapiclient
+# -----------------------------------------------------------------------------
+# Joins whole functionality and provides simple API that require state as
+# a string and return the truth ratio. Maybe I should think about options that
+# will disable the printing information.
+# -----------------------------------------------------------------------------
+# module can be run
