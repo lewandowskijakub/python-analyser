@@ -61,11 +61,19 @@ def count_words(filename):
 
 print(count_words("to_analyse.py"))
 
-
-
 def count_word(filename, word):
     # this function returns number of occurence of word in the file
-    pass
+    counter = 0
+    with open(filename, "r") as file_to_analyse:
+        for line in file_to_analyse.readlines():
+            lines_to_analyse = line.split(" ")
+            for word_in_file in lines_to_analyse:
+                if word.lower() == word_in_file.lower():
+                    counter += 1
+
+    return counter
+
+print(count_word("to_analyse.py", "Class"))
 
 def count_comment_words(filename):
     # this function returns number of words in all comments
