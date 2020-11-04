@@ -38,11 +38,30 @@ print(count_comment_lines("to_analyse.py"))
 
 def count_code_lines(filename):
     # this function returns number of code lines
-    pass
+    counter = 0
+    with open(filename, "r") as file_to_analyse:
+        for line in file_to_analyse.readlines():
+            if line[0] != "#":
+                counter += 1
+    return counter
+
+print(count_code_lines("to_analyse.py"))
 
 def count_words(filename):
     # this function returns number of words in file (#,:,etc, ==, +, etc) are not words
-    pass
+    counter = 0
+    with open(filename, "r") as file_to_analyse:
+        for line in file_to_analyse.readlines():
+            lines_to_analyse = line.split(" ")
+            for word in lines_to_analyse:
+                if word.isalpha():
+                    counter += 1
+    
+    return counter
+
+print(count_words("to_analyse.py"))
+
+
 
 def count_word(filename, word):
     # this function returns number of occurence of word in the file
