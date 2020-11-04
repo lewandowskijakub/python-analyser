@@ -25,7 +25,16 @@ print(count_not_empty_lines("to_analyse.py"))
 def count_comment_lines(filename):
     # this function returns number of comment lines
     # dont forget that comment starts with hash "#" 
-    pass
+    counter = 0
+    with open(filename, "r") as file_to_analyse:
+        for line in file_to_analyse.readlines():
+            if line[0] == "#":
+                counter += 1
+    
+    return counter
+
+print(count_comment_lines("to_analyse.py"))
+
 
 def count_code_lines(filename):
     # this function returns number of code lines
