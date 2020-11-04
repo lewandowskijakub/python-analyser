@@ -52,7 +52,7 @@ def count_words(filename):
     counter = 0
     with open(filename, "r") as file_to_analyse:
         for line in file_to_analyse.readlines():
-            lines_to_analyse = line.split(" ")
+            lines_to_analyse = line.split()
             for word in lines_to_analyse:
                 if word.isalpha():
                     counter += 1
@@ -66,7 +66,7 @@ def count_word(filename, word):
     counter = 0
     with open(filename, "r") as file_to_analyse:
         for line in file_to_analyse.readlines():
-            lines_to_analyse = line.split(" ")
+            lines_to_analyse = line.split()
             for word_in_file in lines_to_analyse:
                 if word.lower() == word_in_file.lower():
                     counter += 1
@@ -77,7 +77,18 @@ print(count_word("to_analyse.py", "Class"))
 
 def count_comment_words(filename):
     # this function returns number of words in all comments
-    pass
+    with open(filename, "r") as file_to_analyse:
+        with open("hash_analyse","w") as file_to_write:
+            for line in file_to_analyse.readlines():
+                data_to_write = line
+                if line[0] == "#":
+                    with open("hash_analyse","a") as file_to_write:
+                        file_to_write.write(data_to_write)
+    
+    return count_words("hash_analyse")
+
+print(count_comment_words("to_analyse.py"))
+
 
 
 def count_syntax(filename, syntax_word):
